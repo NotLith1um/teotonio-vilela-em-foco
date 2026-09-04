@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teotônio Vilela em Foco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap site-bar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+        <rect x="1" y="1" width="38" height="38" rx="4" fill="#F6F3EA" stroke="#182722" stroke-width="2"/>
+        <path d="M8 27L14 15L20 22L25 12L32 27" stroke="#B84B2C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="25" cy="12" r="2.2" fill="#C98A28"/>
+      </svg>
+      <div class="brand-text">Teotônio Vilela em Foco<small>Registro colaborativo de problemas urbanos</small></div>
+    </div>
+    <nav class="site-nav">
+      <button data-nav="inicio" class="active">Início</button>
+      <button data-nav="registrar">Registrar</button>
+      <button data-nav="ocorrencias">Ocorrências</button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Cada buraco, poste apagado ou lixo acumulado tem um endereço. Vamos mapear.</h1>
+      <p class="lead">Uma plataforma feita para os moradores de Teotônio Vilela – AL registrarem problemas de infraestrutura urbana com localização, foto e descrição, e acompanharem o que já foi resolvido.</p>
+      <div class="cta-row">
+        <button class="btn" data-nav="registrar">Registrar um problema</button>
+        <button class="btn secondary" data-nav="ocorrencias">Ver ocorrências da cidade</button>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 420 300" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+        <rect width="420" height="300" fill="#EFEADB"/>
+        <rect y="0" width="420" height="180" fill="#D9E4EC"/>
+        <circle cx="350" cy="55" r="26" fill="#F4E4C4" stroke="#182722" stroke-width="2"/>
+        <path d="M0 180 L420 180" stroke="#182722" stroke-width="2"/>
+        <rect x="0" y="180" width="420" height="120" fill="#DCE7DA"/>
+        <rect x="20" y="120" width="70" height="60" fill="#F6F3EA" stroke="#182722" stroke-width="2"/>
+        <polygon points="15,120 55,90 95,120" fill="#B84B2C" stroke="#182722" stroke-width="2"/>
+        <rect x="120" y="100" width="55" height="80" fill="#F1DCD2" stroke="#182722" stroke-width="2"/>
+        <polygon points="115,100 147,72 180,100" fill="#B84B2C" stroke="#182722" stroke-width="2"/>
+        <rect x="0" y="215" width="420" height="85" fill="#4A4F45"/>
+        <path d="M0 215 L420 215" stroke="#182722" stroke-width="2"/>
+        <ellipse cx="230" cy="248" rx="46" ry="16" fill="#2B2E27" stroke="#182722" stroke-width="2"/>
+        <line x1="60" y1="257" x2="100" y2="257" stroke="#F6F3EA" stroke-width="4" stroke-dasharray="14 12"/>
+        <line x1="300" y1="257" x2="380" y2="257" stroke="#F6F3EA" stroke-width="4" stroke-dasharray="14 12"/>
+        <rect x="330" y="150" width="6" height="65" fill="#182722"/>
+        <circle cx="333" cy="145" r="10" fill="#F4E4C4" stroke="#182722" stroke-width="2"/>
+        <rect x="326" y="215" width="14" height="6" fill="#182722"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><div class="num" id="statTotal">–</div><div class="lbl">ocorrências registradas</div></div>
+    <div class="stat aberto"><div class="num" id="statAberto">–</div><div class="lbl">em aberto</div></div>
+    <div class="stat andamento"><div class="num" id="statAndamento">–</div><div class="lbl">em andamento</div></div>
+    <div class="stat resolvido"><div class="num" id="statResolvido">–</div><div class="lbl">resolvidas</div></div>
+  </div>
+</section>
+
+<section id="registrar">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Registrar um problema</h2>
+      <p>Preencha os campos abaixo. Quanto mais precisa a localização, mais fácil fica para a comunidade e o poder público identificarem o problema.</p>
+    </div>
+
+    <form id="reportForm">
+      <div class="field full">
+        <label>Categoria do problema</label>
+        <div class="cat-grid" id="catGrid"></div>
+      </div>
+
+      <div class="form-grid" style="margin-top:20px;">
+        <div class="field">
+          <label for="bairro">Bairro</label>
+          <input type="text" id="bairro" placeholder="Ex.: Centro, Novo Horizonte..." required>
+        </div>
+        <div class="field">
+          <label for="rua">Rua ou ponto de referência</label>
+          <input type="text" id="rua" placeholder="Ex.: Rua Principal, perto da praça" required>
+        </div>
+        <div class="field full">
+          <label for="descricao">Descrição da ocorrência</label>
+          <textarea id="descricao" placeholder="Descreva o que está acontecendo e desde quando." required></textarea>
+        </div>
+        <div class="field">
+          <label for="nome">Seu nome <span class="opt">(opcional)</span></label>
+          <input type="text" id="nome" placeholder="Como podemos te chamar">
+        </div>
+        <div class="field">
+          <label>Foto do problema <span class="opt">(opcional)</span></label>
+          <div class="img-drop" id="imgDrop">Toque para escolher uma imagem</div>
+          <input type="file" id="imgInput" accept="image/*" style="display:none;">
+          <div id="imgPreviewWrap"></div>
+        </div>
+      </div>
+
+      <div class="form-foot">
+        <button type="submit" class="btn">Enviar registro</button>
+        <span class="form-msg" id="formMsg"></span>
+      </div>
+
+      <p class="privacy-note">Os dados enviados aqui (categoria, localização, descrição, foto e nome, se informado) ficam visíveis para qualquer pessoa que acessar esta mesma plataforma, como um mural público de ocorrências da cidade.</p>
+    </form>
+  </div>
+</section>
+
+<section class="alt" id="ocorrencias">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Ocorrências registradas</h2>
+      <p>Acompanhe o que já foi relatado pelos moradores. Você pode filtrar por categoria, status e buscar por bairro.</p>
+    </div>
+
+    <div class="filters">
+      <div>
+        <label style="display:block;margin-bottom:6px;">Categoria</label>
+        <div class="chip-group" id="catFilter"></div>
+      </div>
+      <div>
+        <label style="display:block;margin-bottom:6px;">Status</label>
+        <div class="chip-group" id="statusFilter"></div>
+      </div>
+      <div class="search-field">
+        <label for="searchBairro">Buscar por bairro ou rua</label>
+        <input type="text" id="searchBairro" placeholder="Digite para buscar...">
+      </div>
+    </div>
+
+    <div id="listArea"></div>
+
+    <div style="margin-top:44px;">
+      <h3 style="font-size:1.1rem;">Ocorrências por categoria</h3>
+      <div class="bars" id="catBars"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Projeto piloto de tecnologia cidadã para a comunidade de Teotônio Vilela – AL, voltado ao registro e acompanhamento de problemas urbanos pelos próprios moradores.</div>
+    <div>Feito com HTML, CSS e JavaScript.</div>
+  </div>
+</footer>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
